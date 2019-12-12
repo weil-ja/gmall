@@ -3,8 +3,10 @@ package com.atguigu.gmall.manage.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.atguigu.gmall.bean.PmsBaseAttrInfo;
 import com.atguigu.gmall.bean.PmsBaseAttrValue;
+import com.atguigu.gmall.bean.PmsBaseSaleAttr;
 import com.atguigu.gmall.manage.mapper.PmsBaseAttrInfoMapper;
 import com.atguigu.gmall.manage.mapper.PmsBaseAttrValueMapper;
+import com.atguigu.gmall.manage.mapper.PmsBaseSaleAttrMapper;
 import com.atguigu.gmall.service.AttrService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +23,27 @@ public class AttrServiceImpl implements AttrService {
     @Autowired
     PmsBaseAttrValueMapper pmsBaseAttrValueMapper;
 
+    @Autowired
+    PmsBaseSaleAttrMapper pmsBaseSaleAttrMapper;
+
 //    根据三级类目id查询PmsBaseAttrInfo集合
     @Override
     public List<PmsBaseAttrInfo> attrInfoList(String catalog3Id) {
         Example example=new Example(PmsBaseAttrInfo.class);
         example.createCriteria().andEqualTo("catalog3Id",catalog3Id);
-        return this.pmsBaseAttrInfoMapper.selectByExample(example);
+
+        List<PmsBaseAttrInfo> pmsBaseAttrInfos = this.pmsBaseAttrInfoMapper.selectByExample(example);
+        for (PmsBaseAttrInfo baseAttrInfo: pmsBaseAttrInfos) {
+
+            PmsBaseAttrValue pmsBaseAttrValue=new PmsBaseAttrValue();
+            pmsBaseAttrValue.setAttrId(baseAttrInfo.getId());
+            List<PmsBaseAttrValue> pmsBaseAttrValues=this.pmsBaseAttrValueMapper.select(pmsBaseAttrValue);
+
+            baseAttrInfo.setAttrValueList(pmsBaseAttrValues);
+            
+        }
+
+        return pmsBaseAttrInfos;
     }
 
 //    根据id的有无，执行增加或修改操作
@@ -78,5 +95,10 @@ public class AttrServiceImpl implements AttrService {
         Example example=new Example(PmsBaseAttrValue.class);
         example.createCriteria().andEqualTo("attrId",attrId);
         return this.pmsBaseAttrValueMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<PmsBaseSaleAttr> baseSaleAttrList() {
+        return this.pmsBaseSaleAttrMapper.selectAll();
     }
 }

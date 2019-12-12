@@ -26,39 +26,44 @@ public class PmsProductSaleAttrValue implements Serializable {
         return id;
     }
 
-    public void setId(String id) {
+    public PmsProductSaleAttrValue setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public PmsProductSaleAttrValue setProductId(String productId) {
         this.productId = productId;
+        return this;
     }
 
     public String getSaleAttrId() {
         return saleAttrId;
     }
 
-    public void setSaleAttrId(String saleAttrId) {
+    public PmsProductSaleAttrValue setSaleAttrId(String saleAttrId) {
         this.saleAttrId = saleAttrId;
+        return this;
     }
 
     public String getSaleAttrValueName() {
         return saleAttrValueName;
     }
 
-    public void setSaleAttrValueName(String saleAttrValueName) {
+    public PmsProductSaleAttrValue setSaleAttrValueName(String saleAttrValueName) {
         this.saleAttrValueName = saleAttrValueName;
+        return this;
     }
 
     public String getIsChecked() {
         return isChecked;
     }
 
-    public void setIsChecked(String isChecked) {
+    public PmsProductSaleAttrValue setIsChecked(String isChecked) {
         this.isChecked = isChecked;
+        return this;
     }
 }

@@ -27,39 +27,44 @@ public class PmsBaseAttrValue implements Serializable {
         return id;
     }
 
-    public void setId(String id) {
+    public PmsBaseAttrValue setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getValueName() {
         return valueName;
     }
 
-    public void setValueName(String valueName) {
+    public PmsBaseAttrValue setValueName(String valueName) {
         this.valueName = valueName;
+        return this;
     }
 
     public String getAttrId() {
         return attrId;
     }
 
-    public void setAttrId(String attrId) {
+    public PmsBaseAttrValue setAttrId(String attrId) {
         this.attrId = attrId;
+        return this;
     }
 
     public String getIsEnabled() {
         return isEnabled;
     }
 
-    public void setIsEnabled(String isEnabled) {
+    public PmsBaseAttrValue setIsEnabled(String isEnabled) {
         this.isEnabled = isEnabled;
+        return this;
     }
 
     public String getUrlParam() {
         return urlParam;
     }
 
-    public void setUrlParam(String urlParam) {
+    public PmsBaseAttrValue setUrlParam(String urlParam) {
         this.urlParam = urlParam;
+        return this;
     }
 }

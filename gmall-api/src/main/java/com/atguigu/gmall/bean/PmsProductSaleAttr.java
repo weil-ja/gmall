@@ -23,45 +23,50 @@ public class PmsProductSaleAttr implements Serializable {
 
 
     @Transient
-    List<PmsProductSaleAttrValue> pmsProductSaleAttrValueList;
+    List<PmsProductSaleAttrValue> spuSaleAttrValueList;
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public PmsProductSaleAttr setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public PmsProductSaleAttr setProductId(String productId) {
         this.productId = productId;
+        return this;
     }
 
     public String getSaleAttrId() {
         return saleAttrId;
     }
 
-    public void setSaleAttrId(String saleAttrId) {
+    public PmsProductSaleAttr setSaleAttrId(String saleAttrId) {
         this.saleAttrId = saleAttrId;
+        return this;
     }
 
     public String getSaleAttrName() {
         return saleAttrName;
     }
 
-    public void setSaleAttrName(String saleAttrName) {
+    public PmsProductSaleAttr setSaleAttrName(String saleAttrName) {
         this.saleAttrName = saleAttrName;
+        return this;
     }
 
-    public List<PmsProductSaleAttrValue> getPmsProductSaleAttrValueList() {
-        return pmsProductSaleAttrValueList;
+    public List<PmsProductSaleAttrValue> getSpuSaleAttrValueList() {
+        return spuSaleAttrValueList;
     }
 
-    public void setPmsProductSaleAttrValueList(List<PmsProductSaleAttrValue> pmsProductSaleAttrValueList) {
-        this.pmsProductSaleAttrValueList = pmsProductSaleAttrValueList;
+    public PmsProductSaleAttr setSpuSaleAttrValueList(List<PmsProductSaleAttrValue> spuSaleAttrValueList) {
+        this.spuSaleAttrValueList = spuSaleAttrValueList;
+        return this;
     }
 }

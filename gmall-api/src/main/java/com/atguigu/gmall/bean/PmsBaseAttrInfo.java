@@ -27,39 +27,44 @@ public class PmsBaseAttrInfo implements Serializable {
         return id;
     }
 
-    public void setId(String id) {
+    public PmsBaseAttrInfo setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getAttrName() {
         return attrName;
     }
 
-    public void setAttrName(String attrName) {
+    public PmsBaseAttrInfo setAttrName(String attrName) {
         this.attrName = attrName;
+        return this;
     }
 
     public String getCatalog3Id() {
         return catalog3Id;
     }
 
-    public void setCatalog3Id(String catalog3Id) {
+    public PmsBaseAttrInfo setCatalog3Id(String catalog3Id) {
         this.catalog3Id = catalog3Id;
+        return this;
     }
 
     public String getIsEnabled() {
         return isEnabled;
     }
 
-    public void setIsEnabled(String isEnabled) {
+    public PmsBaseAttrInfo setIsEnabled(String isEnabled) {
         this.isEnabled = isEnabled;
+        return this;
     }
 
     public List<PmsBaseAttrValue> getAttrValueList() {
         return attrValueList;
     }
 
-    public void setAttrValueList(List<PmsBaseAttrValue> attrValueList) {
+    public PmsBaseAttrInfo setAttrValueList(List<PmsBaseAttrValue> attrValueList) {
         this.attrValueList = attrValueList;
+        return this;
     }
 }

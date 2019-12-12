@@ -20,38 +20,39 @@ public class PmsProductImage implements Serializable {
     @Column
     private String imgUrl;
 
-    public PmsProductImage() {
-    }
-
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public PmsProductImage setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public PmsProductImage setProductId(String productId) {
         this.productId = productId;
+        return this;
     }
 
     public String getImgName() {
         return imgName;
     }
 
-    public void setImgName(String imgName) {
+    public PmsProductImage setImgName(String imgName) {
         this.imgName = imgName;
+        return this;
     }
 
     public String getImgUrl() {
         return imgUrl;
     }
 
-    public void setImgUrl(String imgUrl) {
+    public PmsProductImage setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+        return this;
     }
 }

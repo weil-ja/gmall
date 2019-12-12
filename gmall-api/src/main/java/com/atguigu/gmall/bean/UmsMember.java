@@ -34,151 +34,170 @@ public class UmsMember implements Serializable {
         return id;
     }
 
-    public void setId(String id) {
+    public UmsMember setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getMemberLevelId() {
         return memberLevelId;
     }
 
-    public void setMemberLevelId(String memberLevelId) {
+    public UmsMember setMemberLevelId(String memberLevelId) {
         this.memberLevelId = memberLevelId;
+        return this;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public UmsMember setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public UmsMember setPassword(String password) {
         this.password = password;
+        return this;
     }
 
     public String getNickname() {
         return nickname;
     }
 
-    public void setNickname(String nickname) {
+    public UmsMember setNickname(String nickname) {
         this.nickname = nickname;
+        return this;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public UmsMember setPhone(String phone) {
         this.phone = phone;
+        return this;
     }
 
     public int getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public UmsMember setStatus(int status) {
         this.status = status;
+        return this;
     }
 
     public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public UmsMember setCreateTime(Date createTime) {
         this.createTime = createTime;
+        return this;
     }
 
     public String getIcon() {
         return icon;
     }
 
-    public void setIcon(String icon) {
+    public UmsMember setIcon(String icon) {
         this.icon = icon;
+        return this;
     }
 
     public int getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public UmsMember setGender(int gender) {
         this.gender = gender;
+        return this;
     }
 
     public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public UmsMember setBirthday(Date birthday) {
         this.birthday = birthday;
+        return this;
     }
 
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public UmsMember setCity(String city) {
         this.city = city;
+        return this;
     }
 
     public String getJob() {
         return job;
     }
 
-    public void setJob(String job) {
+    public UmsMember setJob(String job) {
         this.job = job;
+        return this;
     }
 
     public String getPersonalizedSignature() {
         return personalizedSignature;
     }
 
-    public void setPersonalizedSignature(String personalizedSignature) {
+    public UmsMember setPersonalizedSignature(String personalizedSignature) {
         this.personalizedSignature = personalizedSignature;
+        return this;
     }
 
     public int getSourceType() {
         return sourceType;
     }
 
-    public void setSourceType(int sourceType) {
+    public UmsMember setSourceType(int sourceType) {
         this.sourceType = sourceType;
+        return this;
     }
 
     public int getIntegration() {
         return integration;
     }
 
-    public void setIntegration(int integration) {
+    public UmsMember setIntegration(int integration) {
         this.integration = integration;
+        return this;
     }
 
     public int getGrowth() {
         return growth;
     }
 
-    public void setGrowth(int growth) {
+    public UmsMember setGrowth(int growth) {
         this.growth = growth;
+        return this;
     }
 
     public int getLuckeyCount() {
         return luckeyCount;
     }
 
-    public void setLuckeyCount(int luckeyCount) {
+    public UmsMember setLuckeyCount(int luckeyCount) {
         this.luckeyCount = luckeyCount;
+        return this;
     }
 
     public int getHistoryIntegration() {
         return historyIntegration;
     }
 
-    public void setHistoryIntegration(int historyIntegration) {
+    public UmsMember setHistoryIntegration(int historyIntegration) {
         this.historyIntegration = historyIntegration;
+        return this;
     }
 }
