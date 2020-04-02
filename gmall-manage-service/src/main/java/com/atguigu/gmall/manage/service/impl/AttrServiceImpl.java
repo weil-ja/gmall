@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AttrServiceImpl implements AttrService {
@@ -26,48 +27,48 @@ public class AttrServiceImpl implements AttrService {
     @Autowired
     PmsBaseSaleAttrMapper pmsBaseSaleAttrMapper;
 
-//    根据三级类目id查询PmsBaseAttrInfo集合
+    //    根据三级类目id查询PmsBaseAttrInfo集合
     @Override
     public List<PmsBaseAttrInfo> attrInfoList(String catalog3Id) {
-        Example example=new Example(PmsBaseAttrInfo.class);
-        example.createCriteria().andEqualTo("catalog3Id",catalog3Id);
+        Example example = new Example(PmsBaseAttrInfo.class);
+        example.createCriteria().andEqualTo("catalog3Id", catalog3Id);
 
         List<PmsBaseAttrInfo> pmsBaseAttrInfos = this.pmsBaseAttrInfoMapper.selectByExample(example);
-        for (PmsBaseAttrInfo baseAttrInfo: pmsBaseAttrInfos) {
+        for (PmsBaseAttrInfo baseAttrInfo : pmsBaseAttrInfos) {
 
-            PmsBaseAttrValue pmsBaseAttrValue=new PmsBaseAttrValue();
+            PmsBaseAttrValue pmsBaseAttrValue = new PmsBaseAttrValue();
             pmsBaseAttrValue.setAttrId(baseAttrInfo.getId());
-            List<PmsBaseAttrValue> pmsBaseAttrValues=this.pmsBaseAttrValueMapper.select(pmsBaseAttrValue);
+            List<PmsBaseAttrValue> pmsBaseAttrValues = this.pmsBaseAttrValueMapper.select(pmsBaseAttrValue);
 
             baseAttrInfo.setAttrValueList(pmsBaseAttrValues);
-            
+
         }
 
         return pmsBaseAttrInfos;
     }
 
-//    根据id的有无，执行增加或修改操作
+    //    根据id的有无，执行增加或修改操作
     @Override
     public String saveAttrInfo(PmsBaseAttrInfo pmsBaseAttrInfo) {
 
-        if (StringUtils.isEmpty(pmsBaseAttrInfo.getId())){
+        if (StringUtils.isEmpty(pmsBaseAttrInfo.getId())) {
 //            id为空，保存
 //        添加属性
             this.pmsBaseAttrInfoMapper.insertSelective(pmsBaseAttrInfo);
 
 //        添加属性值
             insertAttr(pmsBaseAttrInfo);
-        }else {
+        } else {
 //            不为空，修改
-            Example example=new Example(PmsBaseAttrInfo.class);
-            example.createCriteria().andEqualTo("id",pmsBaseAttrInfo.getId());
+            Example example = new Example(PmsBaseAttrInfo.class);
+            example.createCriteria().andEqualTo("id", pmsBaseAttrInfo.getId());
 //            属性
-            this.pmsBaseAttrInfoMapper.updateByExampleSelective(pmsBaseAttrInfo,example);
+            this.pmsBaseAttrInfoMapper.updateByExampleSelective(pmsBaseAttrInfo, example);
 
 //            属性值
 
 //            删除旧属性值
-            PmsBaseAttrValue record=new PmsBaseAttrValue();
+            PmsBaseAttrValue record = new PmsBaseAttrValue();
             record.setAttrId(pmsBaseAttrInfo.getId());
             this.pmsBaseAttrValueMapper.delete(record);
 
@@ -77,7 +78,7 @@ public class AttrServiceImpl implements AttrService {
         return "success";
     }
 
-    public void insertAttr(PmsBaseAttrInfo pmsBaseAttrInfo){
+    public void insertAttr(PmsBaseAttrInfo pmsBaseAttrInfo) {
         List<PmsBaseAttrValue> attrValueList = pmsBaseAttrInfo.getAttrValueList();
         for (PmsBaseAttrValue attrValue : attrValueList) {
             attrValue.setAttrId(pmsBaseAttrInfo.getId());
@@ -87,18 +88,27 @@ public class AttrServiceImpl implements AttrService {
 
     /**
      * 查询修改需要的参数
+     *
      * @param attrId
      * @return
      */
     @Override
     public List<PmsBaseAttrValue> getAttrValueList(String attrId) {
-        Example example=new Example(PmsBaseAttrValue.class);
-        example.createCriteria().andEqualTo("attrId",attrId);
+        Example example = new Example(PmsBaseAttrValue.class);
+        example.createCriteria().andEqualTo("attrId", attrId);
         return this.pmsBaseAttrValueMapper.selectByExample(example);
     }
 
     @Override
     public List<PmsBaseSaleAttr> baseSaleAttrList() {
         return this.pmsBaseSaleAttrMapper.selectAll();
+    }
+
+    @Override
+    public List<PmsBaseAttrInfo> getAttrValueListByValueId(Set<String> valueIdSet) {
+//        将集合通过逗号拼接成字符串
+        String valueIdStr = StringUtils.join(valueIdSet, ",");
+        List<PmsBaseAttrInfo> pmsBaseAttrInfos = pmsBaseAttrInfoMapper.selectAttrValueListByValueId(valueIdStr);
+        return pmsBaseAttrInfos;
     }
 }
