@@ -12,3 +12,4 @@ gmall-search-web 8083
 
 gmall-cart-service 8033
 gmall-cart-web 8084
+gmall-seckill 秒杀
